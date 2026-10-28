@@ -58,13 +58,25 @@ describe("PostsPage", () => {
 
     await act(() => {
       resolvePosts([
-        { id: 1, header: "Test post 1" },
-        { id: 2, header: "Test post 2" },
+        {
+          id: 1,
+          header: "Test post 1",
+          createdAt: new Date().toISOString(),
+          body: "placeholder",
+          author: { username: "Brandon" },
+        },
+        {
+          id: 2,
+          header: "Test post 2",
+          body: "placeholder",
+          createdAt: new Date().toISOString(),
+          author: { username: "John" },
+        },
       ]);
     });
 
     // Expect posts to be displayed on successful call
-    expect(screen.getByText("Posts placeholder")).toBeInTheDocument();
+    expect(screen.queryByTestId("posts-list")).toBeInTheDocument();
   });
 
   test("No posts available", async () => {
