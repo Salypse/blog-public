@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
-import Post from "../components/Post";
+import PostPreview from "../components/PostPreview";
 
 const post = {
   id: 1,
@@ -11,9 +11,9 @@ const post = {
   author: { username: "Brandon" },
 };
 
-describe("Post component", () => {
+describe("PostPreview component", () => {
   test("displays correct post data", () => {
-    render(<Post post={post} />);
+    render(<PostPreview post={post} />);
 
     expect(screen.getByRole("heading", { name: "Test post 1 header" })).toBeInTheDocument();
     expect(screen.getByText("Test post 1 sub-header")).toBeInTheDocument();
@@ -22,13 +22,13 @@ describe("Post component", () => {
   });
 
   test("displays correctly formatted createdAt value", () => {
-    render(<Post post={post} />);
+    render(<PostPreview post={post} />);
 
     expect(screen.getByText("October 19, 2026")).toBeInTheDocument();
   });
 
   test("displays a short post without truncation", () => {
-    render(<Post post={post} />);
+    render(<PostPreview post={post} />);
 
     expect(screen.getByText("Test post 1 body")).toBeInTheDocument();
   });
@@ -43,14 +43,14 @@ describe("Post component", () => {
       author: { username: "Brandon" },
     };
 
-    render(<Post post={testPost} />);
+    render(<PostPreview post={testPost} />);
 
     expect(document.querySelector(".post-body")).toHaveTextContent(`${"x".repeat(100)}...`);
   });
 
   test("sub header is not displayed when its value is null", () => {
     render(
-      <Post
+      <PostPreview
         post={{
           id: 2,
           header: "Test post 2",

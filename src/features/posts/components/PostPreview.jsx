@@ -1,6 +1,6 @@
 import styles from "../styles/Post.module.css";
 
-function Post({ post }) {
+function PostPreview({ post }) {
   const postDate = new Date(post.createdAt);
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -31,4 +31,4 @@ function Post({ post }) {
   );
 }
 
-export default Post;
+export default PostPreview;

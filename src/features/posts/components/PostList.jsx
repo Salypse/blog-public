@@ -1,4 +1,4 @@
-import Post from "./Post";
+import PostPreview from "./PostPreview";
 
 function PostList({ posts }) {
   return (
@@ -7,7 +7,7 @@ function PostList({ posts }) {
         <ul data-testid="posts-list">
           {posts.map((post) => (
             <li key={post.id}>
-              <Post post={post} />
+              <PostPreview post={post} />
             </li>
           ))}
         </ul>
