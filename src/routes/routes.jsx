@@ -4,6 +4,7 @@ import Login from "../features/auth/components/Login/Login";
 import SignUp from "../features/auth/components/SignUp/SignUp";
 import UnauthenticatedOnlyLayout from "../components/layouts/UnauthenticatedOnlyLayout";
 import PostsPage from "../features/posts/pages/PostsPage";
+import PostPage from "../features/posts/pages/PostPage";
 
 const routes = [
   {
@@ -18,6 +19,7 @@ const routes = [
           { path: "sign-up", element: <SignUp /> },
         ],
       },
+      { path: "posts/:id", element: <PostPage /> },
 
       { path: "*", element: <NotFound /> },
     ],
