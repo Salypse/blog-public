@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import ErrorList from "../../../../components/Errors/ErrorList/ErrorList";
 import { useNavigate } from "react-router";
-import { AuthContext } from "../../../../components/layouts/MainLayout";
+import { AuthContext } from "../../../../components/layouts/AuthContext";
 import ErrorMessage from "../../../../components/Errors/ErrorMessage/ErrorMessage";
 import LoadingSpinner from "../../../../components/Loading/LoadingSpinner";
 
@@ -28,17 +28,14 @@ function LoginForm(props) {
     try {
       setIsLoading(true);
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/auth/login`,
-        {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formProps),
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify(formProps),
+      });
 
       if (!response.ok) {
         const data = await response.json();
@@ -71,9 +68,7 @@ function LoginForm(props) {
         <>
           {requestError && <ErrorMessage />}
 
-          {validationErrors.length > 0 && (
-            <ErrorList errors={validationErrors} />
-          )}
+          {validationErrors.length > 0 && <ErrorList errors={validationErrors} />}
 
           <form onSubmit={handleSubmit}>
             <label htmlFor="email">Email: </label>

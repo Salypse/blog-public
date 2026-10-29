@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Outlet, Navigate } from "react-router";
-import { AuthContext } from "./MainLayout";
+import { AuthContext } from "./AuthContext";
 
 function UnauthenticatedOnlyLayout() {
   const { authStatus } = useContext(AuthContext);

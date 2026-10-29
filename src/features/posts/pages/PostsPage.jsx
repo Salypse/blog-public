@@ -8,25 +8,26 @@ function PostsPage() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const loadPosts = async () => {
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const postData = await getPosts();
-
-      setPosts(postData);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const [retryStatus, setRetryStatus] = useState(false);
 
   useEffect(() => {
+    const loadPosts = async () => {
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const postData = await getPosts();
+
+        setPosts(postData);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     loadPosts();
-  }, []);
+  }, [retryStatus]);
 
   return (
     <>
@@ -37,7 +38,7 @@ function PostsPage() {
       ) : !error ? (
         <PostList posts={posts} />
       ) : (
-        <ErrorMessage onClick={loadPosts} />
+        <ErrorMessage onClick={() => setRetryStatus((status) => !status)} />
       )}
     </>
   );

@@ -1,21 +1,12 @@
 import { Outlet } from "react-router";
 import Navbar from "../Navbar/Navbar.jsx";
-import { createContext, useEffect, useState } from "react";
+import { AuthContext } from "./AuthContext.jsx";
 import { useAuthInit } from "../../hooks/useAuthInit.js";
 import ErrorMessage from "../Errors/ErrorMessage/ErrorMessage.jsx";
 import LoadingSpinner from "../Loading/LoadingSpinner.jsx";
 
-export const AuthContext = createContext(null);
-
 function MainLayout() {
-  const {
-    user,
-    authStatus,
-    accessToken,
-    setAccessToken,
-    initializeAuth,
-    logout,
-  } = useAuthInit();
+  const { user, authStatus, accessToken, setAccessToken, initializeAuth, logout } = useAuthInit();
 
   return (
     <AuthContext

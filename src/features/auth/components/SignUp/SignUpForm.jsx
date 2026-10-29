@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import ErrorList from "../../../../components/Errors/ErrorList/ErrorList";
 import ErrorMessage from "../../../../components/Errors/ErrorMessage/ErrorMessage";
@@ -22,16 +22,13 @@ function SignUpForm() {
 
     try {
       setIsLoading(true);
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/auth/sign-up`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": `application/json`,
-          },
-          body: JSON.stringify(formProps),
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/sign-up`, {
+        method: "POST",
+        headers: {
+          "Content-Type": `application/json`,
         },
-      );
+        body: JSON.stringify(formProps),
+      });
 
       const data = await response.json();
 
@@ -60,9 +57,7 @@ function SignUpForm() {
         <>
           {requestError && <ErrorMessage />}
 
-          {validationErrors.length > 0 && (
-            <ErrorList errors={validationErrors} />
-          )}
+          {validationErrors.length > 0 && <ErrorList errors={validationErrors} />}
 
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username: </label>
