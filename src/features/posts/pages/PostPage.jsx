@@ -4,6 +4,7 @@ import { getPost } from "../api/getPost";
 import LoadingSpinner from "../../../components/Loading/LoadingSpinner";
 import ErrorMessage from "../../../components/Errors/ErrorMessage/ErrorMessage";
 import PostData from "../components/PostData";
+import PostComments from "../components/PostComments";
 
 function PostPage() {
   const { id } = useParams();
@@ -39,6 +40,9 @@ function PostPage() {
         <>
           {/* Post data component */}
           <PostData post={post} />
+
+          {/* Post comments component */}
+          <PostComments comments={post.comments} />
         </>
       ) : (
         <ErrorMessage onClick={() => setRetryStatus((status) => !status)} />
