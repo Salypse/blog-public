@@ -72,7 +72,9 @@ async function protectedApiCall(url, options, setAccessToken) {
     }
   }
   // Successful API call
-  return await response.json();
+  if (response.status == 204) {
+    return null;
+  } else return await response.json();
 }
 
 export default protectedApiCall;

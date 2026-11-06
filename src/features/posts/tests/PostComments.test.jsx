@@ -19,13 +19,13 @@ const comments = [
 
 describe("PostComments component", () => {
   test("display correct number of comments", () => {
-    render(<PostComments comments={comments} />);
+    render(<PostComments initialComments={comments} />);
 
     expect(document.querySelectorAll(".comment")).toHaveLength(2);
   });
 
   test("displays message when comments array is empty", () => {
-    render(<PostComments comments={[]} />);
+    render(<PostComments initialComments={[]} />);
 
     expect(document.querySelectorAll(".comment")).toHaveLength(0);
     expect(screen.getByText("No comments yet.")).toBeInTheDocument();

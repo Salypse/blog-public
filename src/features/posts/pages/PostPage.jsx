@@ -42,7 +42,7 @@ function PostPage() {
           <PostData post={post} />
 
           {/* Post comments component */}
-          <PostComments comments={post.comments} />
+          <PostComments initialComments={post.comments} />
         </>
       ) : (
         <ErrorMessage onClick={() => setRetryStatus((status) => !status)} />
