@@ -2,6 +2,7 @@ import { AuthContext } from "../../../components/layouts/AuthContext";
 import { useContext } from "react";
 import { useParams } from "react-router";
 import { deletePostComment } from "../api/deletePostComment";
+import { toast } from "react-toastify";
 import Modal from "../../../components/Modal/Modal";
 
 function Comment({ comment, onDeleteComment, setIsLoading }) {
@@ -24,6 +25,11 @@ function Comment({ comment, onDeleteComment, setIsLoading }) {
       onDeleteComment(comment.id);
     } catch (error) {
       console.error(`Deletion error: ${error.message}`);
+      toast.error(
+        <div>
+          Could not delete post <br /> <strong>Please try again</strong>
+        </div>,
+      );
       throw error;
     } finally {
       setIsLoading(false);
