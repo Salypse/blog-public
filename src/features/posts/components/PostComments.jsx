@@ -20,7 +20,7 @@ function PostComments({ initialComments }) {
 
       {isLoading ? (
         <LoadingSpinner />
-      ) : comments.length > 0 ? (
+      ) : (
         <div>
           {/* If user is logged in show new comment form */}
           {user && authStatus === "authenticated" ? (
@@ -30,20 +30,22 @@ function PostComments({ initialComments }) {
           )}
 
           {/* Comments lists */}
-          <ul>
-            {comments.map((comment) => (
-              <li key={comment.id}>
-                <Comment
-                  comment={comment}
-                  onDeleteComment={onDeleteComment}
-                  setIsLoading={setIsLoading}
-                />
-              </li>
-            ))}
-          </ul>
+          {comments.length > 0 ? (
+            <ul>
+              {comments.map((comment) => (
+                <li key={comment.id}>
+                  <Comment
+                    comment={comment}
+                    onDeleteComment={onDeleteComment}
+                    setIsLoading={setIsLoading}
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No comments yet.</p>
+          )}
         </div>
-      ) : (
-        <p>No comments yet.</p>
       )}
     </section>
   );
