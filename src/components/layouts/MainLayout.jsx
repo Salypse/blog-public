@@ -20,13 +20,15 @@ function MainLayout() {
       }}
     >
       <Navbar />
-      {authStatus === "loading" ? (
-        <LoadingSpinner />
-      ) : authStatus === "error" ? (
-        <ErrorMessage onClick={initializeAuth} />
-      ) : (
-        <Outlet />
-      )}
+      <main>
+        {authStatus === "loading" ? (
+          <LoadingSpinner />
+        ) : authStatus === "error" ? (
+          <ErrorMessage onClick={initializeAuth} />
+        ) : (
+          <Outlet />
+        )}
+      </main>
     </AuthContext>
   );
 }

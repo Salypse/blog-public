@@ -8,22 +8,30 @@ function Navbar() {
 
   return (
     <nav>
-      <h1>
-        <Link to="">Navbar</Link>
-      </h1>
+      <header>
+        <Link to="" className={styles["nav-link"]} aria-label="blog homepage">
+          Blog
+        </Link>
+      </header>
 
-      {authStatus !== "loading" ? (
-        !user ? (
-          <Link to="login">Login</Link>
-        ) : (
-          <>
-            <strong>{user.username}</strong>
-            <button onClick={logout}>Logout</button>
-          </>
-        )
-      ) : (
-        <></>
-      )}
+      <div id={styles["nav-auth"]}>
+        {authStatus !== "loading" &&
+          (!user ? (
+            <Link to="login" className={styles["nav-link"]}>
+              Login
+            </Link>
+          ) : (
+            <>
+              <div id={styles["nav-user"]}>
+                <img src="/images/icons/user.svg" aria-hidden="true" />
+                <strong>{user.username}</strong>
+              </div>
+              <button onClick={logout} className={styles["nav-link"]}>
+                <strong>Logout</strong>
+              </button>
+            </>
+          ))}
+      </div>
     </nav>
   );
 }

@@ -1,1 +1,85 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
+  padding: 0.5rem;
+
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}
+
+nav header {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: bold;
+}
+
+#nav-auth {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  display: flex;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+#nav-auth button {
+  color: var(--color-text);
+  font-size: clamp(1.1rem, 1.8vw, 1.2rem);
+  text-align: center;
+
+  flex: 1;
+  position: relative;
+  min-width: 25px;
+  background-color: transparent;
+}
+
+#nav-user {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  border-right: 2px solid var(--color-divider);
+  padding-right: 0.5rem;
+}
+
+#nav-user img {
+  position: absolute;
+  right: 100%;
+
+  height: 60%;
+  width: auto;
+  margin-right: 0.1rem;
+
+  filter: invert(100%) sepia(4%) saturate(5620%) hue-rotate(308deg) brightness(105%) contrast(91%);
+}
+
+.nav-link {
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.nav-link:active {
+  transform: scale(0.95);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  background-color: var(--color-divider);
+  transition: width 0.2s;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  width: 100%;
+}

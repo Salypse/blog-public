@@ -1,3 +1,12 @@
+:root {
+  --color-primary: #dce0df;
+  --color-secondary: #5f5ff6;
+
+  --color-text: #f5f3f0;
+
+  --color-divider: #f5e9d7;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,4 +15,23 @@
 
 ul {
   list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: none;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: var(--color-primary);
 }
