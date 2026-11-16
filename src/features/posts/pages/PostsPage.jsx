@@ -31,7 +31,7 @@ function PostsPage() {
   }, [retryStatus]);
 
   return (
-    <>
+    <div id={styles["posts-page"]}>
       <title>Blog Posts</title>
       <h1 id={styles["posts-page-header"]}>Posts</h1>
 
@@ -42,7 +42,7 @@ function PostsPage() {
       ) : (
         <ErrorMessage onClick={() => setRetryStatus((status) => !status)} />
       )}
-    </>
+    </div>
   );
 }
 
