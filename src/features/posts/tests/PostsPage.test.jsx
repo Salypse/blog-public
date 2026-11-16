@@ -56,7 +56,7 @@ describe("PostsPage", () => {
       rejectPosts(new Error("Test Error"));
     });
 
-    expect(screen.getByTestId("error-message")).toBeVisible();
+    expect(document.querySelector(`[id*="error-message-container"]`)).toBeVisible();
   });
 
   test("displays posts when loading succeeds", async () => {

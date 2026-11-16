@@ -2,7 +2,7 @@ import styles from "./ErrorMessage.module.css";
 
 function ErrorMessage({ onClick }) {
   return (
-    <div data-testid="error-message-container" id={styles["error-message-container"]}>
+    <div id={styles["error-message-container"]}>
       <p id={styles["error-message"]}>Something went wrong. Please try again.</p>
 
       {/* Render retry button if onClick was provided */}
