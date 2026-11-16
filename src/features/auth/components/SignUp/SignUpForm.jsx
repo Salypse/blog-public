@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import ErrorList from "../../../../components/Errors/ErrorList/ErrorList";
 import ErrorMessage from "../../../../components/Errors/ErrorMessage/ErrorMessage";
 import LoadingSpinner from "../../../../components/Loading/LoadingSpinner";
+import styles from "../../styles/AuthForm.module.css";
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -52,14 +53,14 @@ function SignUpForm() {
   }
 
   return (
-    <>
+    <div id={styles["auth-form-container"]}>
       {!isLoading ? (
         <>
           {requestError && <ErrorMessage />}
 
           {validationErrors.length > 0 && <ErrorList errors={validationErrors} />}
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} id={styles["auth-form"]}>
             <label htmlFor="username">Username: </label>
             <input type="text" name="username"></input>
 
@@ -72,13 +73,15 @@ function SignUpForm() {
             <label htmlFor="confirmPassword">Confirm Password: </label>
             <input type="password" name="confirmPassword"></input>
 
-            <button type="submit">Sign Up</button>
+            <button type="submit" id={styles["auth-form-btn"]}>
+              Sign Up
+            </button>
           </form>
         </>
       ) : (
         <LoadingSpinner />
       )}
-    </>
+    </div>
   );
 }
 

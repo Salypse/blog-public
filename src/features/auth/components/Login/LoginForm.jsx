@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { AuthContext } from "../../../../components/layouts/AuthContext";
 import ErrorMessage from "../../../../components/Errors/ErrorMessage/ErrorMessage";
 import LoadingSpinner from "../../../../components/Loading/LoadingSpinner";
+import styles from "../../styles/AuthForm.module.css";
 
 function LoginForm(props) {
   const navigate = useNavigate();
@@ -63,27 +64,29 @@ function LoginForm(props) {
   }
 
   return (
-    <>
+    <div id={styles["auth-form-container"]}>
       {!isLoading ? (
         <>
           {requestError && <ErrorMessage />}
 
           {validationErrors.length > 0 && <ErrorList errors={validationErrors} />}
 
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email: </label>
-            <input type="email" name="email" />
+          <form onSubmit={handleSubmit} id={styles["auth-form"]}>
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" autoComplete="email" required />
 
-            <label htmlFor="password">Password: </label>
-            <input type="password" name="password" />
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" required />
 
-            <button type="submit">Login</button>
+            <button type="submit" id={styles["auth-form-btn"]}>
+              Login
+            </button>
           </form>
         </>
       ) : (
         <LoadingSpinner />
       )}
-    </>
+    </div>
   );
 }
 

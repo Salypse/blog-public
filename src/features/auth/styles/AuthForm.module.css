@@ -1,0 +1,104 @@
+#auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: auto;
+  margin-top: 2rem;
+
+  padding: 0.5rem;
+
+  background-color: var(--color-card-background);
+  border: 5px solid var(--color-secondary);
+  border-radius: 1rem;
+
+  width: 90%;
+  max-width: 400px;
+}
+
+#auth-page h1 {
+  color: var(--color-text-header);
+}
+
+#auth-form-container {
+  width: 100%;
+}
+
+#auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#auth-form button {
+  align-self: center;
+}
+
+#auth-form label {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-weight: bold;
+}
+
+#auth-form input {
+  margin-bottom: 0.5rem;
+  padding: 0.2rem;
+
+  border-radius: 0.5rem;
+  border: 3px solid var(--color-secondary);
+
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+#auth-form input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 5px 2px var(--color-secondary);
+}
+
+#auth-form-btn {
+  color: var(--color-text);
+  font-weight: bold;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  background-color: var(--color-secondary);
+  border: 3px solid var(--color-secondary);
+  border-radius: 1rem;
+
+  padding: 0.3rem 0.6rem;
+  margin-bottom: 1rem;
+
+  transition: transform 0.1s ease-in-out;
+}
+
+#auth-form-btn:hover,
+#auth-form-btn:focus-visible {
+  transform: scale(1.1);
+  background-color: transparent;
+  color: var(--color-secondary);
+}
+
+#auth-form-btn:active {
+  transform: scale(0.95);
+}
+
+#no-account-text {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+}
+
+#no-account-text a {
+  color: var(--color-secondary);
+  font-weight: bold;
+
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  transition: border-color 0.2s ease-in-out;
+
+  display: inline-block;
+}
+
+#no-account-text a:focus-visible {
+  border-color: var(--color-secondary);
+}
+
+#no-account-text a:active {
+  transform: scale(0.95);
+}
