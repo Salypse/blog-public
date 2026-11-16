@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
 import PostList from "../components/PostList";
+import { MemoryRouter } from "react-router";
 
 const posts = [
   {
@@ -23,22 +24,30 @@ const posts = [
   },
 ];
 
+function renderPostList(posts) {
+  return render(
+    <MemoryRouter>
+      <PostList posts={posts} />
+    </MemoryRouter>,
+  );
+}
+
 describe("PostListComponent", () => {
   test("displays the correct number of rendered posts", () => {
-    render(<PostList posts={posts} />);
+    renderPostList(posts);
 
     expect(screen.getAllByRole("article")).toHaveLength(2);
   });
 
   test("renders no posts when posts array is empty", () => {
-    render(<PostList posts={[]} />);
+    renderPostList([]);
 
     expect(screen.queryAllByRole("article")).toHaveLength(0);
     expect(screen.getByText("No posts available")).toBeVisible();
   });
 
   test("displays the correct post headers", () => {
-    render(<PostList posts={posts} />);
+    renderPostList(posts);
 
     expect(screen.getByRole("heading", { name: "Test post 1" })).toBeVisible();
     expect(screen.getByRole("heading", { name: "Test post 2" })).toBeVisible();

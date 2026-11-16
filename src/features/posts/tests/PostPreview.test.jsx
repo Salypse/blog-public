@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
 import PostPreview from "../components/PostPreview";
+import { MemoryRouter } from "react-router";
 
 const post = {
   id: 1,
@@ -11,24 +12,32 @@ const post = {
   author: { username: "Brandon" },
 };
 
+function renderPostPreview(post) {
+  return render(
+    <MemoryRouter>
+      <PostPreview post={post} />
+    </MemoryRouter>,
+  );
+}
+
 describe("PostPreview component", () => {
   test("displays correct post data", () => {
-    render(<PostPreview post={post} />);
-
+    renderPostPreview(post);
     expect(screen.getByRole("heading", { name: "Test post 1 header" })).toBeInTheDocument();
     expect(screen.getByText("Test post 1 sub-header")).toBeInTheDocument();
     expect(screen.getByText("Test post 1 body")).toBeInTheDocument();
     expect(screen.getByText("Brandon")).toBeInTheDocument();
+    expect(screen.getByText("October 19, 2026")).toBeInTheDocument();
   });
 
   test("displays correctly formatted createdAt value", () => {
-    render(<PostPreview post={post} />);
+    renderPostPreview(post);
 
     expect(screen.getByText("October 19, 2026")).toBeInTheDocument();
   });
 
   test("displays a short post without truncation", () => {
-    render(<PostPreview post={post} />);
+    renderPostPreview(post);
 
     expect(screen.getByText("Test post 1 body")).toBeInTheDocument();
   });
@@ -43,27 +52,23 @@ describe("PostPreview component", () => {
       author: { username: "Brandon" },
     };
 
-    render(<PostPreview post={testPost} />);
+    renderPostPreview(testPost);
 
-    expect(document.querySelector(".post-body")).toHaveTextContent(`${"x".repeat(100)}...`);
+    expect(screen.getByTestId("post-body")).toHaveTextContent(`${"x".repeat(100)}...`);
   });
 
   test("sub header is not displayed when its value is null", () => {
-    render(
-      <PostPreview
-        post={{
-          id: 2,
-          header: "Test post 2",
-          body: "Test post 2 body",
-          createdAt: "2026-10-19T19:24:40.482Z",
-          author: { username: "John" },
-        }}
-      />,
-    );
+    renderPostPreview({
+      id: 2,
+      header: "Test post 2",
+      body: "Test post 2 body",
+      createdAt: "2026-10-19T19:24:40.482Z",
+      author: { username: "John" },
+    });
 
     expect(screen.getByText("Test post 2 body")).toBeInTheDocument();
-    expect(screen.getByText("October 19, 2026")).toBeInTheDocument();
     expect(screen.getByText("John")).toBeInTheDocument();
+    expect(screen.getByText("October 19, 2026")).toBeInTheDocument();
     expect(screen.getAllByRole("paragraph")).toHaveLength(3);
   });
 });

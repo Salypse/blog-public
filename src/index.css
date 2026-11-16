@@ -1,10 +1,13 @@
 :root {
   --color-primary: #dce0df;
   --color-secondary: #5f5ff6;
+  --color-card-background: #ffffff;
 
   --color-text: #f5f3f0;
+  --color-text-secondary: #585757;
+  --color-text-header: #1f1e1e;
 
-  --color-divider: #f5e9d7;
+  --color-divider: #adaaa7;
 }
 
 * {

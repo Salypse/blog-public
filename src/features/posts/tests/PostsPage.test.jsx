@@ -1,6 +1,7 @@
 import { describe, test, expect, vi, beforeEach } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import { getPosts } from "../api/getPosts";
+import { MemoryRouter } from "react-router";
 import PostsPage from "../pages/PostsPage";
 
 vi.mock("../api/getPosts", () => ({
@@ -22,9 +23,17 @@ beforeEach(() => {
   vi.mocked(getPosts).mockReturnValue(postsPromise);
 });
 
+function renderPostPage() {
+  return render(
+    <MemoryRouter>
+      <PostsPage />
+    </MemoryRouter>,
+  );
+}
+
 describe("PostsPage", () => {
   test("loading spinner displays when loading", async () => {
-    render(<PostsPage />);
+    renderPostPage();
 
     // Expect loadingSpinner to be visible before promise is resolved
     expect(screen.getByTestId("loading-spinner")).toBeVisible();
@@ -37,7 +46,7 @@ describe("PostsPage", () => {
   });
 
   test("on error, error message is display", async () => {
-    render(<PostsPage />);
+    renderPostPage();
 
     // Expect ErrorMessage to not be displayed before promise is finished
     expect(screen.queryByTestId("error-message")).not.toBeInTheDocument();
@@ -51,7 +60,7 @@ describe("PostsPage", () => {
   });
 
   test("displays posts when loading succeeds", async () => {
-    render(<PostsPage />);
+    renderPostPage();
 
     // Expect posts to not be displayed before loading and error checks
     expect(screen.queryByText("Posts placeholder")).not.toBeInTheDocument();
@@ -80,7 +89,7 @@ describe("PostsPage", () => {
   });
 
   test("No posts available", async () => {
-    render(<PostsPage />);
+    renderPostPage();
 
     // Expect no posts message to not be displayed before loading and error checks
     expect(screen.queryByText("No posts available")).not.toBeInTheDocument();

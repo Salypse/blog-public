@@ -1,0 +1,10 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#posts-page-header {
+  color: var(--color-text-header);
+  margin: 0.5rem 0;
+}

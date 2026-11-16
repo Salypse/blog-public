@@ -1,4 +1,5 @@
-import styles from "../styles/Post.module.css";
+import styles from "../styles/PostPreview.module.css";
+import { Link } from "react-router";
 
 function PostPreview({ post }) {
   const postDate = new Date(post.createdAt);
@@ -13,20 +14,26 @@ function PostPreview({ post }) {
 
   return (
     <article className={styles.post}>
-      <div className="post-info">
+      <div className={styles["post-info"]}>
         <p>{post.author.username}</p>
         <p>{formattedDate}</p>
       </div>
 
-      <div className="post-header">
+      <div className={styles["post-header"]}>
         <h2>{post.header}</h2>
 
         {/* optional subHeader */}
         {post.subHeader && <p>{post.subHeader}</p>}
       </div>
 
-      <p className="post-body">{formattedBody}</p>
-      <a href={`/posts/${post.id}`} className={styles["post-link"]} />
+      <p className={styles["post-body"]} data-testid="post-body">
+        {formattedBody}
+      </p>
+
+      <Link to={`/posts/${post.id}`} className={styles["post-link"]}>
+        Read More
+        <img src="/images/icons/arrow.svg" aria-hidden="true" />
+      </Link>
     </article>
   );
 }

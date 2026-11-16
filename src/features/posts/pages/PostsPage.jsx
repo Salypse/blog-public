@@ -3,6 +3,7 @@ import { getPosts } from "../api/getPosts";
 import LoadingSpinner from "../../../components/Loading/LoadingSpinner";
 import ErrorMessage from "../../../components/Errors/ErrorMessage/ErrorMessage";
 import PostList from "../components/PostList";
+import styles from "../styles/PostsPage.module.css";
 
 function PostsPage() {
   const [posts, setPosts] = useState([]);
@@ -31,7 +32,8 @@ function PostsPage() {
 
   return (
     <>
-      <h1>Posts</h1>
+      <title>Blog Posts</title>
+      <h1 id={styles["posts-page-header"]}>Posts</h1>
 
       {isLoading ? (
         <LoadingSpinner />
