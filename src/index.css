@@ -8,6 +8,8 @@
   --color-text-header: #1f1e1e;
 
   --color-divider: #adaaa7;
+
+  --color-error: #f53c3c;
 }
 
 * {
