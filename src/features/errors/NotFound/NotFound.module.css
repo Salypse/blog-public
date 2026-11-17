@@ -1,0 +1,46 @@
+#not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 100px;
+}
+
+#not-found-page h1 {
+  font-size: clamp(1.5rem, 7vw, 2.5rem);
+  color: var(--color-text-header);
+}
+
+#not-found-page p {
+  font-size: clamp(1.3rem, 5vw, 1.5rem);
+}
+
+#not-found-page a {
+  display: inline-block;
+
+  margin: 1rem;
+  padding: 0.3rem 0.8rem;
+
+  border: 5px solid var(--color-secondary);
+  border-radius: 2rem;
+
+  font-size: clamp(1.2rem, 5vw, 1.4rem);
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+
+  transition:
+    transform 0.2s ease-in-out,
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+#not-found-page a:hover,
+#not-found-page a:focus-visible {
+  transform: scale(1.05);
+  background-color: transparent;
+  color: var(--color-secondary);
+}
+
+#not-found-page a:active {
+  transform: scale(0.95);
+}
