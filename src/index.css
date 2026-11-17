@@ -9,7 +9,8 @@
 
   --color-divider: #adaaa7;
 
-  --color-error: #f53c3c;
+  --color-error: #f91c1c;
+  --color-error-background: #f9b9b9;
 }
 
 * {

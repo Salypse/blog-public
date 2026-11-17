@@ -62,16 +62,16 @@ function SignUpForm() {
 
           <form onSubmit={handleSubmit} id={styles["auth-form"]}>
             <label htmlFor="username">Username: </label>
-            <input type="text" name="username"></input>
+            <input type="text" name="username" required></input>
 
             <label htmlFor="email">Email: </label>
-            <input type="email" name="email"></input>
+            <input type="email" name="email" required></input>
 
             <label htmlFor="password">Password: </label>
-            <input type="password" name="password"></input>
+            <input type="password" name="password" required></input>
 
             <label htmlFor="confirmPassword">Confirm Password: </label>
-            <input type="password" name="confirmPassword"></input>
+            <input type="password" name="confirmPassword" required></input>
 
             <button type="submit" id={styles["auth-form-btn"]}>
               Sign Up
