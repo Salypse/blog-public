@@ -1,0 +1,13 @@
+#post-page {
+  flex: 1;
+  align-self: center;
+  background-color: white;
+  padding: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  #post-page {
+    width: 95%;
+  }
+}

@@ -5,6 +5,7 @@ import LoadingSpinner from "../../../components/Loading/LoadingSpinner";
 import ErrorMessage from "../../../components/Errors/ErrorMessage/ErrorMessage";
 import PostData from "../components/PostData";
 import PostComments from "../components/PostComments";
+import styles from "../styles/PostPage.module.css";
 
 function PostPage() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ function PostPage() {
   }, [id, retryStatus]);
 
   return (
-    <>
+    <div id={styles["post-page"]}>
       {isLoading ? (
         <LoadingSpinner />
       ) : !error ? (
@@ -47,7 +48,7 @@ function PostPage() {
       ) : (
         <ErrorMessage onClick={() => setRetryStatus((status) => !status)} />
       )}
-    </>
+    </div>
   );
 }
 
