@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Comment from "./Comment";
 import LoadingSpinner from "../../../components/Loading/LoadingSpinner";
-import { AuthContext } from "../../../components/layouts/AuthContext";
+
 import PostCommentForm from "./PostCommentForm";
+import styles from "../styles/PostComments.module.css";
 
 function PostComments({ initialComments }) {
   const [comments, setComments] = useState(() => initialComments);
   const [isLoading, setIsLoading] = useState(false);
-  const { user, authStatus } = useContext(AuthContext);
 
   function onDeleteComment(commentId) {
     setComments((prevComments) => prevComments.filter((comment) => comment.id !== commentId));
@@ -15,19 +15,14 @@ function PostComments({ initialComments }) {
   }
 
   return (
-    <section id="comments">
+    <section id={styles["post-comments"]}>
       <h2>Comments</h2>
 
       {isLoading ? (
         <LoadingSpinner />
       ) : (
         <div>
-          {/* If user is logged in show new comment form */}
-          {user && authStatus === "authenticated" ? (
-            <PostCommentForm setIsLoading={setIsLoading} setComments={setComments} />
-          ) : (
-            <p>Login to add a comment!</p>
-          )}
+          <PostCommentForm setIsLoading={setIsLoading} setComments={setComments} />
 
           {/* Comments lists */}
           {comments.length > 0 ? (

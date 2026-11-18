@@ -1,0 +1,48 @@
+#post-comment-form {
+  display: flex;
+  justify-self: center;
+
+  border-radius: 1rem;
+  border: 3px solid var(--color-secondary);
+  overflow: hidden;
+  background-color: var(--color-secondary);
+}
+
+#post-comment-form input {
+  border: none;
+  padding: 0.3rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  background-color: var(--color-card-background);
+}
+
+#post-comment-form input:focus {
+  box-shadow: 0 0 5px 5px var(--color-secondary);
+  outline: none;
+}
+
+#post-comment-form button {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: var(--color-text);
+
+  background-color: var(--color-secondary);
+  padding: 0.3rem;
+
+  border-left: 3px solid transparent;
+
+  transition:
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+#post-comment-form button:hover,
+#post-comment-form button:focus-visible {
+  background-color: var(--color-card-background);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+#post-comment-form button:active {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}

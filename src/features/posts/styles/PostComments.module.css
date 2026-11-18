@@ -1,0 +1,14 @@
+#post-comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#post-comments h2 {
+  color: var(--color-text-header);
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+}
+
+#post-comments > div {
+  width: 100%;
+}

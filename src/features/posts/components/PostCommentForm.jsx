@@ -4,10 +4,11 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../components/layouts/AuthContext";
 import ErrorList from "../../../components/Errors/ErrorList/ErrorList";
 import LoadingSpinner from "../../../components/Loading/LoadingSpinner";
+import styles from "../styles/PostCommentForm.module.css";
 
 function PostCommentForm({ setComments }) {
   const { id } = useParams();
-  const { accessToken, setAccessToken } = useContext(AuthContext);
+  const { user, authStatus, accessToken, setAccessToken } = useContext(AuthContext);
   const [inputValue, setInputValue] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,30 +37,29 @@ function PostCommentForm({ setComments }) {
   }
 
   return (
-    <>
-      {validationErrors.length > 0 && <ErrorList errors={validationErrors} />}
+    <div id={styles["post-comment-form-container"]}>
+      {user && authStatus === "authenticated" ? (
+        <>
+          {validationErrors.length > 0 && <ErrorList errors={validationErrors} />}
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="comment-message">Message</label>
-        <input
-          id="comment-message"
-          name="commentMessage"
-          onChange={(event) => setInputValue(event.target.value)}
-          value={inputValue}
-        ></input>
+          <form onSubmit={handleSubmit} id={styles["post-comment-form"]}>
+            <input
+              id="comment-message"
+              name="commentMessage"
+              onChange={(event) => setInputValue(event.target.value)}
+              value={inputValue}
+              placeholder="Add a comment"
+            ></input>
 
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? (
-            <>
-              <LoadingSpinner size={"small"} />
-              <p>Posting</p>
-            </>
-          ) : (
-            <p>Post Comment</p>
-          )}
-        </button>
-      </form>
-    </>
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? <LoadingSpinner size="small" /> : "Post comment"}
+            </button>
+          </form>
+        </>
+      ) : (
+        <p>Logged out</p>
+      )}
+    </div>
   );
 }
 
