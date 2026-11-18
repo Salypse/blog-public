@@ -10,6 +10,7 @@
 #error-list li {
   background-color: var(--color-error-background);
   width: 75%;
+  max-width: 300px;
   border-radius: 2rem;
   padding: 0.5rem;
   padding-left: 2rem;
