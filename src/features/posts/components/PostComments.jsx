@@ -21,12 +21,12 @@ function PostComments({ initialComments }) {
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <div>
+        <>
           <PostCommentForm setIsLoading={setIsLoading} setComments={setComments} />
 
           {/* Comments lists */}
           {comments.length > 0 ? (
-            <ul>
+            <ul id={styles["post-comments-list"]}>
               {comments.map((comment) => (
                 <li key={comment.id}>
                   <Comment
@@ -40,7 +40,7 @@ function PostComments({ initialComments }) {
           ) : (
             <p>No comments yet.</p>
           )}
-        </div>
+        </>
       )}
     </section>
   );

@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { deletePostComment } from "../api/deletePostComment";
 import { toast } from "react-toastify";
 import Modal from "../../../components/Modal/Modal";
+import styles from "../styles/Comment.module.css";
 
 function Comment({ comment, onDeleteComment, setIsLoading }) {
   const { id } = useParams();
@@ -37,23 +38,25 @@ function Comment({ comment, onDeleteComment, setIsLoading }) {
   }
 
   return (
-    <article className="comment">
-      <div className="comment-info">
+    <article className={styles["comment"]}>
+      <div className={styles["comment-info"]}>
         <p>{comment.author.username}</p>
         <p>{formattedDate}</p>
       </div>
 
-      {/* if user is owner of comment allow deletion */}
-      {user && user.id === comment.authorId && authStatus === "authenticated" && (
-        <Modal openText="Delete comment">
-          <strong>Delete this comment?</strong>
-          <p>This action cannot be undone.</p>
+      <div className={styles["comment-content"]}>
+        <p className={styles["comment-message"]}>{comment.message}</p>
 
-          <button onClick={() => handleDelete()}>Delete</button>
-        </Modal>
-      )}
+        {/* if user is owner of comment allow deletion */}
+        {user && user.id === comment.authorId && authStatus === "authenticated" && (
+          <Modal openContent="/images/icons/delete.svg" type="img" label="delete comment">
+            <strong>Delete this comment?</strong>
+            <p>This action cannot be undone.</p>
 
-      <p>{comment.message}</p>
+            <button onClick={() => handleDelete()}>Delete</button>
+          </Modal>
+        )}
+      </div>
     </article>
   );
 }

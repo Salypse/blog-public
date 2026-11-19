@@ -21,13 +21,13 @@ describe("PostComments component", () => {
   test("display correct number of comments", () => {
     render(<PostComments initialComments={comments} />);
 
-    expect(document.querySelectorAll(".comment")).toHaveLength(2);
+    expect(document.querySelector(`[id*="post-comments-list"]`).children).toHaveLength(2);
   });
 
   test("displays message when comments array is empty", () => {
     render(<PostComments initialComments={[]} />);
 
-    expect(document.querySelectorAll(".comment")).toHaveLength(0);
+    expect(document.querySelector(`[id*="post-comments-list"]`)).not.toBeInTheDocument();
     expect(screen.getByText("No comments yet.")).toBeInTheDocument();
   });
 

@@ -64,7 +64,7 @@ describe("Comment component", () => {
 
     renderComment(comment);
 
-    const openDeleteModalBtn = screen.getByRole("button", { name: "Delete comment" });
+    const openDeleteModalBtn = screen.getByRole("button", { name: "delete comment" });
     await user.click(openDeleteModalBtn);
 
     const deleteBtn = screen.getByRole("button", { name: "Delete" });
@@ -89,12 +89,12 @@ describe("Comment component", () => {
       authorId: 2,
     });
 
-    expect(screen.queryByText("Delete comment")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "delete comment" })).not.toBeInTheDocument();
   });
 
   test("delete button is visible when user is post author", () => {
     renderComment(comment);
 
-    expect(screen.getByText("Delete comment")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "delete comment" })).toBeInTheDocument();
   });
 });
