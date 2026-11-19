@@ -57,7 +57,7 @@ function PostCommentForm({ setComments }) {
           </form>
         </>
       ) : (
-        <p>Logged out</p>
+        <p>Login to add a comment</p>
       )}
     </div>
   );

@@ -46,3 +46,9 @@
   background-color: var(--color-secondary);
   color: var(--color-text);
 }
+
+#post-comment-form-container p {
+  color: var(--color-text-secondary);
+  font-weight: bold;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+}
