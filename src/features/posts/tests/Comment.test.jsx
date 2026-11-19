@@ -67,10 +67,10 @@ describe("Comment component", () => {
     const openDeleteModalBtn = screen.getByRole("button", { name: "delete comment" });
     await user.click(openDeleteModalBtn);
 
-    const deleteBtn = screen.getByRole("button", { name: "Delete" });
-    expect(deleteBtn).toBeInTheDocument();
+    const confirmDeleteBtn = screen.getByRole("button", { name: "Confirm" });
+    expect(confirmDeleteBtn).toBeInTheDocument();
 
-    await user.click(deleteBtn);
+    await user.click(confirmDeleteBtn);
 
     expect(deletePostComment).toHaveBeenCalledWith(
       "1",

@@ -53,7 +53,9 @@ function Comment({ comment, onDeleteComment, setIsLoading }) {
             <strong>Delete this comment?</strong>
             <p>This action cannot be undone.</p>
 
-            <button onClick={() => handleDelete()}>Delete</button>
+            <button onClick={() => handleDelete()} id={styles["delete-comment-btn"]}>
+              Confirm
+            </button>
           </Modal>
         )}
       </div>

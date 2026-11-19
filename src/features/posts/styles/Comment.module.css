@@ -57,3 +57,25 @@
 .comment button:active {
   filter: none;
 }
+
+#delete-comment-btn {
+  margin: 0.5rem 0;
+  padding: 0.3rem 0.5rem;
+
+  border: 3px solid var(--color-secondary);
+  border-radius: 0.5rem;
+
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+
+  cursor: pointer;
+  transition:
+    background-color 0.1s ease-in-out,
+    color 0.1s ease-in-out;
+}
+
+#delete-comment-btn:hover {
+  background-color: transparent;
+  color: var(--color-secondary);
+}
