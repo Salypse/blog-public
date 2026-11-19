@@ -25,7 +25,7 @@ function PostCommentForm({ setComments }) {
 
       const data = await createPostComment(id, formProps, accessToken, setAccessToken, setComments);
 
-      if (data.errors) {
+      if (data?.errors) {
         setValidationErrors(data.errors.map((error) => error.msg));
       }
     } catch (error) {
