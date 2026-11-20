@@ -22,6 +22,7 @@ function PostPage() {
 
       try {
         const postData = await getPost(id);
+        document.title = postData.header;
         setPost(postData);
       } catch (error) {
         setError(error);
@@ -34,21 +35,23 @@ function PostPage() {
   }, [id, retryStatus]);
 
   return (
-    <div id={styles["post-page"]}>
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : !error ? (
-        <>
-          {/* Post data component */}
-          <PostData post={post} />
+    <>
+      <div id={styles["post-page"]}>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : !error ? (
+          <>
+            {/* Post data component */}
+            <PostData post={post} />
 
-          {/* Post comments component */}
-          <PostComments initialComments={post.comments} />
-        </>
-      ) : (
-        <ErrorMessage onClick={() => setRetryStatus((status) => !status)} />
-      )}
-    </div>
+            {/* Post comments component */}
+            <PostComments initialComments={post.comments} />
+          </>
+        ) : (
+          <ErrorMessage onClick={() => setRetryStatus((status) => !status)} />
+        )}
+      </div>
+    </>
   );
 }
 

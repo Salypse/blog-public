@@ -8,6 +8,7 @@ function Login() {
 
   return (
     <div id={styles["auth-page"]}>
+      <title>Login</title>
       <h1>Login</h1>
       <LoginForm isLoading={isLoading} setIsLoading={setIsLoading} />
       {!isLoading && (
