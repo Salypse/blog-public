@@ -1,16 +1,77 @@
-# React + Vite
+# Blog Public
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Preview:** https://blog-public.onrender.com/
 
-Currently, two official plugins are available:
+**API:** https://github.com/Salypse/blog-api
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Front-end Blog application that allows users to view published posts and leave comments on them.
 
-## React Compiler
+![Blog App screenshot](./public/images/screenshots/blog_post.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+### Posts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Calls API to retrieve all published posts
+- List of all posts on homepage with previews to their content
+- Dedicated pages to each post where users can view author info, post content, and comments left on post
+
+### Comments
+
+- When viewing a post users can leave comments on any post as long as they are logged in
+- Comments display users name, date post was created, the comment message, and the option to delete the comment if they created it
+
+### Authentication
+
+- Handles authentication for API requests using JWT access and refresh tokens
+- Automatically refreshes expired access tokens when possible
+
+## Technologies Used
+
+- JavaScript
+- HTML
+- CSS
+- React
+- Vite
+- Vitest
+
+## Prerequisites
+
+- Node.js
+- Access to a deployed instance of the Blog API
+- npm
+
+## Installation
+
+1. Clone the repository and enter directory
+
+```bash
+git clone https://github.com/Salypse/blog-public.git
+cd blog-public
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Create a .env file in the project root
+
+```bash
+touch .env
+```
+
+```env
+# .env
+
+VITE_API_URL=deployed_blog_api_url
+```
+
+**If deploying your own instance, ensure the frontend URL is included in the API's allowed CORS origins.**
+
+4. Start the application
+
+```bash
+npm run dev
+```
