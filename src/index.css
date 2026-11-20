@@ -17,6 +17,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Playfair Display", "sans-serif";
 }
 
 ul {
@@ -48,4 +49,9 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/playfair_display/PlayfairDisplay-Regular.ttf");
 }
